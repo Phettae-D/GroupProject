@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Menu</title>
+</head>
+<body>
+    
+    <h1>MENU</h1>
+        <a href="Page1.html">
+        <button>Back to menu</button>
+        </a>
+
+    <h2>Drink Menu</h2>
+    <div class="contsiner_Drink">
+        <p><strong>Water</strong></p>
+        <p>Price = 5.000 kip</p>
+        <img src="download.jpg">
+        <button onclick="addToCart('Water', 5000)">Add to Cart</button>
+
+        <p><strong>Pepsi</strong></p>
+        <p>Price = 8.000 kip</p>
+        <img src="Pepsi.jpg">
+        <button onclick="addToCart('Pepsi', 8000)">Add to Cart</button>
+
+        <p><strong>Beer lao</strong></p>
+        <p>Price = 16.000 kip</p>
+        <img src ="Beer lao.jpg" width="220"height="220">
+        <button onclick="addToCart('Beer lao', 16000)">Add to Cart</button>
+
+        <p><strong>Schweppes</strong></p>
+        <p>Price = 12.000 kip</p>
+        <img src ="Schweppes.jpg">
+        <button onclick="addToCart('Schweppes', 12000)">Add to Cart</button>
+
+        <p><strong>Chrysanthemum Tea</strong></p>
+        <p>Price = 15.000 kip</p>
+        <img src ="download.png">
+        <button onclick="addToCart('Chrysanthemum Tea', 15000)">Add to Cart</button>
+        
+    </div>
+
+    <script>
+        function addToCart(item, price) {
+            
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+            let existingItem = cart.find(product => product.name === item);
+      
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: item, price: price, quantity: 1 }); 
+            }
+      
+            localStorage.setItem("cart", JSON.stringify(cart));
+      
+            alert(item + " has been added to your cart!");
+        }
+      
+        function viewCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            console.log(cart);
+        }
+      </script>
+      
+</body>
+</html>

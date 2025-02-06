@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Menu</title>
+
+</head>
+
+<body>
+    <header>
+        <h1>MENU</h1>
+        <a href="Page1.html">
+        <button>Back to menu</button>
+      </a>
+    </header>
+    <h2>Food</h2>
+    <div class="container_Food">
+        <p><strong>Fried Rice</strong></p>
+        <p>Price = 35.000 kip / 45.000 kip</p>
+        <img src="Fried.jpg" width="220" height="220">
+        <button onclick="addToCart('Fried Rice', 35000)">Add small to Cart</button>
+        <button onclick="addToCart('Fried Rice', 45000)">Add large to Cart</button>
+
+        <p><strong>Pad kra pao</strong></p>
+        <p>Price = 35.000 kip / 45.000 kip</p>
+        <img src="KraPao.jpg" width="220" height="220">
+        <button onclick="addToCart('Pad kra pao', 35000)">Add small to Cart</button>
+        <button onclick="addToCart('Pad kra pao', 45000)">Add large to Cart</button>
+
+        <p><strong>Laap</strong></p>
+        <p>Price = 30.000 kip / 40.000 kip</p>
+        <img src="Laap.jpg" width="220" height="220">
+        <button onclick="addToCart('Laap(small)', 35000)">Add small to Cart</button>
+        <button onclick="addToCart('Laap(large)', 45000)">Add large to Cart</button>
+    </div>
+
+    <script>
+        function addToCart(item, price) {
+            
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+            let existingItem = cart.find(product => product.name === item);
+      
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: item, price: price, quantity: 1 }); 
+            }
+      
+            localStorage.setItem("cart", JSON.stringify(cart));
+      
+            alert(item + " has been added to your cart!");
+        }
+      
+        function viewCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            console.log(cart);
+        }
+      </script>
+      
+</body>
+
+</html>

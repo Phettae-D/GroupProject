@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noodle Menu</title>
+</head>
+<body>
+    <h1>MENU</h1>
+        <a href="Page1.html">
+        <button>Back to menu</button>
+        </a>
+    <div class = "container_Noodle">
+        <p><strong>Phor</strong></p>
+        <p>Price = 30.000 kip / 40.000 kip</p>
+        <img src="Phor.jpg" width="230" height="220">
+        <button onclick="addToCart('Phor', 30000)">Add small to Cart</button>
+        <button onclick="addToCart('Phor', 40000)">Add large to Cart</button>
+
+        <p><strong>Khao soi</strong></p>
+        <p>Price = 35.000 kip / 45.000 kip</p>
+        <img src="Khao soi.jpg">
+        <button onclick="addToCart('Khao soi', 35000)">Add small to Cart</button>
+        <button onclick="addToCart('Khao soi', 40000)">Add large to Cart</button>
+
+        <p><strong>Pad Thai</strong></p>
+        <p>Price = 35.000 kip / 45.000 kip</p>
+        <img src="Pad Thai.jpg">
+        <button onclick="addToCart('Pad Thai', 35000)">Add small to Cart</button>
+        <button onclick="addToCart('Pad Thai', 45000)">Add large to Cart</button>
+
+        <p><strong>Kuai-tiao ruea</strong></p>
+        <p>Price = 35.000 kip / 45.000 kip</p>
+        <img src="Kuai-tiao ruea.jpg">
+        <button onclick="addToCart('Kuai-tiao ruea', 35000)">Add small to Cart</button>
+        <button onclick="addToCart('Kuai-tiao ruea', 40000)">Add large to Cart</button>
+    </div>
+
+    <script>
+        function addToCart(item, price) {
+            
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+            let existingItem = cart.find(product => product.name === item);
+      
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: item, price: price, quantity: 1 }); 
+            }
+      
+            localStorage.setItem("cart", JSON.stringify(cart));
+      
+            alert(item + " has been added to your cart!");
+        }
+      
+        function viewCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            console.log(cart);
+        }
+      </script>
+      
+</body>
+</html>
